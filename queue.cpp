@@ -21,7 +21,6 @@ void print(queue *);
 
 int main(void){
 	queue q1;
-	cout<<q1.fila;
 	int element, dequeued;
 	initialize(&q1);
 	int option;
@@ -46,7 +45,6 @@ int main(void){
 			case 2:
 				if(!empty(&q1)){
 					dequeued = dequeue(&q1);
-					cout<<dequeued;
 					cout<<"Sale:"<<" "<<dequeued<<endl;
 					system("pause");
 				}
@@ -61,9 +59,10 @@ int main(void){
 					print(&q1);
 					system("pause");
 				}
-				else
+				else if(empty(&q1)){
 					cout<<"Fila vacia"<<endl;
 					system("pause");
+				}
 				break;
 			
 			case 4:
@@ -103,8 +102,6 @@ void enqueue(queue *pq, int element){
 
 int dequeue(queue *pq){
 	int temporal = pq->fila[pq->front];
-	cout<<temporal<<endl;
-	system("pause");
 	for(int i = 0;i < pq->rear-1;i++){
 		pq->fila[i] = pq->fila[i+1];
 	}
@@ -126,7 +123,7 @@ void menu(){
 
 void print(queue *pq){
 	for(int i = 0; i < pq->rear;i++){
-		cout<<"<--"<<pq->fila[i];
+		cout<<pq->fila[i]<<"<--"<<endl;
 	}
 }
 
