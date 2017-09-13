@@ -43,6 +43,7 @@ int main(void){
 					insert_first_elem(&q1, nvo);
 					cout<<"Te la metieron excitantemente"<<endl;
 				}
+				
 				else{
 					cont--;
 					free(nvo);
@@ -50,22 +51,39 @@ int main(void){
 				}
 				break;
 				
-			case 2:
-				if(eliminate_start(&q1)){
-					cout<<"Nodo eliminado"<<endl;
+			case 2: nvo=createNode();
+				if(nvo!=NULL){
+					if(insert_end(&q1, nvo))
+						cout<<"Elemento insertado"<<endl;
+					else{
+						cont--;
+						free(nvo);
+						cout<<"Error. Lista vacia"<<endl;
+					}
 				}
+				else
+					cout<<"No pudo crearse el nodo"<<endl;
+				break;
+				
+			case 3: 
+				if(eliminate_start(&q1))
+					cout<<"Nodo eliminado"<<endl;
 				else
 					cout<<"Error"<<endl;
 				break;
-			case 3:
-				if(q1.tamano!=0){
+			case 4:
+				if(q1.tamano!=0)
 					print(&q1);
-				}
 				else
 					cout<<"Fila vacia"<<endl;
-			case 4:
+				break;
+				
+			case 5:
 				cout<<"Adios."<<endl;
 				break;
+			
+			default:
+				cout<<"Opcion no valida"<<endl;
 		}
 		system("pause");
 	}while(option!=5);
@@ -104,8 +122,7 @@ int insert_end(Queue *l, Elemento *nvo){
 
 int eliminate_start(Queue *l){
     Elemento *aux=l->inicio;
-    if(l->tamano>1)
-    {
+    if(l->tamano>1){
         l->inicio=l->inicio->sig;  //l->inicio=aux->sig;
         free(aux);
         l->tamano--;
