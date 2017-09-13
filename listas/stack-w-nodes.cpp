@@ -16,9 +16,19 @@ typedef struct ListaIdentificar{
     int tamano;
 }Pila;
 
+Elemento * createNode(void);
+int initialize_stack(Pila *, Elemento *);
+int push(Pila *, Elemento *);
+int pop(Pila *);
+void print(Pila *l);
+void menu();
+void initialize(Pila *);
+int cont=0;
+
 int main(void){
 	Pila s1;
 	Elemento *nvo;
+	int option;
 	
 	initialize(&s1);
 	
@@ -28,10 +38,56 @@ int main(void){
 		switch(option){
 			case 1:
 				nvo=createNode();
-				if(nvo!=NULL)
-					cout<<"Primer elemento insertado exitosamente"<<endl;
+				if(nvo!=NULL){
+					if(initialize_stack(&s1, nvo))
+						cout<<"Primer elemento insertado exitosamente"<<endl;
+					else{
+						cont--;
+						free(nvo);
+						cout<<"Error. La pila ya contiene elementos."<<endl;
+					}
+				}
+				else
+					cout<<"No se pudo crear el nodo"<<endl;
+				break;
+				
+			case 2:
+				nvo=createNode();
+				if(nvo!=NULL){
+					if(push(&s1, nvo))
+						cout<<"Elemento insertado exitosamente"<<endl;
+					else{
+						cont--;
+						free(nvo);
+						cout<<"Overflow"<<endl;
+					}
+				}
+				else
+					cout<<"No se pudo generar el nodo"<<endl;
+				break;
+			
+			case 3:
+				if(pop(&s1))
+					cout<<"Elemento eliminado"<<endl;
+				else
+					cout<<"Underflow"<<endl;
+				break;
+			
+			case 4:
+				if(s1.tamano!=0)
+					print(&s1);
+				else
+					cout<<"No hay elementos"<<endl;
+				break;
+				
+			case 5:
+				cout<<"Fin del programa"<<endl;
+				break;
+			default:
+				cout<<"Opcion invalida"<<endl;
 		}
-	}while(option!=4);
+		system("pause");
+	}while(option!=5);
 	
 }
 
@@ -92,9 +148,19 @@ void initialize(Pila *l)
 }
 
 void menu(){
+	system("cls");
 	cout<<"Opcion 1. Inicializar pila"<<endl<<"Opcion 2. Push"
 	<<endl<<"Opcion 3. Pop"<<endl<<"Opcion 4. Imprimir pila"<<endl<<"Opcion 5. Salir"<<endl;
 	cout<<"Opcion: ";
+}
+
+void print(Pila *l){
+    Elemento *aux=l->inicio;
+    while(aux!=NULL)
+    {
+        printf("%d --> ", aux->dato);
+        aux=aux->sig;
+    }
 }
 
 

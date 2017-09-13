@@ -54,6 +54,7 @@ int main(void)
                     else
                         printf("Error.No se pudo crear nodo.");
                     break;
+                    
             case 2: nvo=creaNodo();
                     if(nvo!=NULL)
                     {
