@@ -155,11 +155,12 @@ void menu(void)
     printf("6) Eliminar al inicio.\n");
     printf("7) Eliminar al final.\n");
     printf("8) Eliminar en alguna posición.\n");
-    printf("9 Destruir lista.\n");
+    printf("9) Destruir lista.\n");
     printf("10) Imprimir\n");
     printf("11) Salir\n");
     printf("Opción: ");
 }
+
 void inicializa(Lista *l)
 {
     l->inicio=NULL;
@@ -212,8 +213,8 @@ int inserta_al_inicio(Lista *l, Elemento *nvo)
     else
         return 0;
 }
-int inserta_al_final(Lista *l, Elemento *nvo)
-{
+
+int inserta_al_final(Lista *l, Elemento *nvo){
     if(l->tamano>0)
     {
         l->fin->sig=nvo;
@@ -224,6 +225,7 @@ int inserta_al_final(Lista *l, Elemento *nvo)
     else
         return 0;
 }
+
 int inserta_en_pos(Lista *l, Elemento *nvo, int pos)
 {
     Elemento *aux=l->inicio;    int i;
@@ -249,8 +251,8 @@ int inserta_en_pos(Lista *l, Elemento *nvo, int pos)
     else
         return 0;
 }
-int elimina_al_inicio(Lista *l)
-{
+
+int elimina_al_inicio(Lista *l){
     Elemento *aux=l->inicio;
     if(l->tamano>1)
     {
@@ -262,8 +264,8 @@ int elimina_al_inicio(Lista *l)
     else
         return 0;
 }
-int elimina_al_final(Lista *l)
-{
+
+int elimina_al_final(Lista *l){
     Elemento *aux=l->inicio;   int i;
     if(l->tamano>1){
         for(i=1;i<=(l->tamano-2);i++)
