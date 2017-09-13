@@ -41,7 +41,7 @@ int main(void){
 			case 1: nvo=createNode();
 				if(nvo!=NULL){
 					insert_first_elem(&q1, nvo);
-					cout<<"Te la metieron excitantemente"<<endl;
+					cout<<"Fila inicializada. Primer elemento insertado"<<endl;
 				}
 				
 				else{
@@ -139,8 +139,7 @@ void menu(){
 	cout<<"Opcion: ";
 }
 
-int insert_first_elem(Queue *l, Elemento *nvo)
-{
+int insert_first_elem(Queue *l, Elemento *nvo){
         if(l->tamano==0){
             l->inicio=nvo;
             l->fin=nvo;
@@ -151,8 +150,7 @@ int insert_first_elem(Queue *l, Elemento *nvo)
             return 0;
 }
 
-void print(Queue *l)
-{
+void print(Queue *l){
     Elemento *aux=l->inicio;
     while(aux!=NULL)
     {
