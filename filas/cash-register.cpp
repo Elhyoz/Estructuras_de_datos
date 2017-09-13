@@ -72,9 +72,11 @@ void print(cash *pq){
 
 int dequeue(cash *pq){
 	int temporal = pq->queue[pq->front];
+	
 	for(int i = 0;i < pq->rear-1;i++){
 		pq->queue[i] = pq->queue[i+1];
 	}
+	
 	pq->rear--;
 	return temporal;
 }

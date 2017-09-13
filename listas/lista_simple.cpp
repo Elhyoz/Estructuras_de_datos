@@ -43,7 +43,7 @@ int main(void)
         {
             case 1: nvo=creaNodo();
                     if(nvo!=NULL){
-                        if(inserta_primer_elem(&lista1,nvo))
+                        if(inserta_primer_elem(&lista1, nvo))
                             printf("Primer elemento insertado con éxito.");
                         else{
                             cont--;
@@ -199,6 +199,7 @@ int inserta_primer_elem(Lista *l, Elemento *nvo)
         else
             return 0;
 }
+
 int inserta_al_inicio(Lista *l, Elemento *nvo)
 {
     if(l->tamano>0)
